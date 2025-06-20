@@ -15,29 +15,36 @@
     </properties>
 
     <dependencies>
-        <!-- ActiveMQ para JMS -->
+        <!-- ActiveMQ com suporte a JMS -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-all</artifactId>
             <version>5.17.6</version>
         </dependency>
 
-        <!-- (Opcional) Logging SLF4J para ActiveMQ -->
+        <!-- SLF4J API -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.13</version>
         </dependency>
+
+        <!-- Implementação compatível de logging com Log4j para evitar erro de inicialização -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>2.0.13</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.20.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.20.0</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Plugin para compilar com Java 17 -->
+            <!-- Compilação com Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -48,7 +55,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin para empacotar em um .jar executável -->
+            <!-- Geração de JAR executável -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -56,7 +63,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>view.ChatClientUI</mainClass> <!-- ajuste se o main for outro -->
+                            <mainClass>view.ChatClientUI</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
